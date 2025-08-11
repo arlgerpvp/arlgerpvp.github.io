@@ -1,57 +1,88 @@
 <!DOCTYPE html>
-<html style="width:100%;height:100%;background-color:black;">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-		<meta name="description" content="arlen pvp eaglercraft client" />
-		<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8, arlgerpvp, client, pvpclient, minecraft, lunar client, badlion client" />
-		<title>ArlGerPVP</title>
-		<meta property="og:locale" content="en-US" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="ArlGerPVP" />
-		<meta property="og:description" content="arlen pvp eaglercraft client" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
-		<script type="text/javascript" src="classes.js"></script>
-		<script type="text/javascript">
-			"use strict";
-			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					var relayId = Math.floor(Math.random() * 3);
-					window.eaglercraftXOpts = {
-						demoMode: false,
-						container: "game_frame",
-						assetsURI: "assets.epk",
-						localesURI: "lang/",
-						joinServer: "ws://212.192.29.30:25764",
-						worldsDB: "worlds",
-						logInvalidCerts: true,
-						crashOnUncaughtExceptions: true,
-						servers: [
-							{ addr: "ws://212.192.29.30:25764", name: "Server" }
-						],
-						relays: [
-							{ addr: "ws://localhost:6699", comment: "Relay", primary: relayId === 0 }
-						]
-					};
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArlGerPVP Client</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background-color: #0a1a33; /* dark blue */
+      color: #cbd5e1;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 3rem;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    .btn-custom {
+      background-color: #164a82;
+      color: #cbd5e1;
+      font-weight: 600;
+      width: 140px;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover:not(:disabled) {
+      background-color: #1f5ca7;
+      color: #e0e7ff;
+    }
+    .btn-custom:disabled {
+      background-color: #466d9e;
+      color: #a0aec0;
+      cursor: default;
+    }
+    /* Layout for the buttons */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .btn-row-single {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
 
-					var q = window.location.search;
-					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
-						q = new window.URLSearchParams(q);
-						var s = q.get("server");
-						if(s) window.eaglercraftXOpts.joinServer = s;
-					}
+  <div class="container">
+    <h1>ArlGerPVP - 1.8.8 Eaglercraft PVP Client</h1>
 
-					main();
-				}
-			});
-		</script>
-	</head>
-	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
-	</body>
+    <div class="btn-row">
+      <button type="button" class="btn btn-custom" onclick="location.href='/js'">
+        1.8.8 JavaScript
+      </button>
+      <button type="button" class="btn btn-custom" onclick="location.href='/wasm'">
+        1.8.8 WASM
+      </button>
+    </div>
+    <div class="btn-row-single">
+      <button type="button" class="btn btn-custom" disabled>
+        1.12.2 WASM (coming soon)
+      </button>
+    </div>
+  </div>
 
+  <!-- Bootstrap 5 JS Bundle with Popper (optional) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"
+  ></script>
+</body>
 </html>
-
-
-
